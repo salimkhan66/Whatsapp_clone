@@ -7,11 +7,12 @@ import axios from "axios";
 import { useAuth } from "../Context/authProvider";
 
 function Login() {
+ 
   const [authUser, setAuthUser] = useAuth()
   const navigate = useNavigate();
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
   const onSubmit = async(data)=>{
-   
     axios.post('http://localhost:8080/user/login', data,{ withCredentials: true })
     .then((response) => {
       localStorage.setItem('messenger',JSON.stringify(response.data) );

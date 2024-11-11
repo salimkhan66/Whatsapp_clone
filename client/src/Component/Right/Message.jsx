@@ -1,21 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 
-function Message() {
+function Message({item}) {
+  const [chatSetup,setChatSetup]=useState("")
+  
+
+  const myid = JSON.parse(localStorage.getItem("messenger")) || "";
 
 
-  return (
-    <div>
-      <div className="p-4">
-        <div className={`chat Salim khan`}>
-          <div className={`chat-bubble text-white `}>
-          hi bro
-          </div>
-          <div className="chat-footer">12 bje h</div>
-        </div>
+    return (
+      <div>
+        {myid && item && (
+          item.senderId === myid.user._id ? (
+            <div className="chat chat-end">
+              <div className="chat-bubble chat-bubble-accent">
+                {item.message}
+              </div>
+              <div className="chat-footer">{item.updatedAt}</div>
+            </div>
+          ) : (
+            <div className="chat chat-start">
+              <div className="chat-bubble chat-bubble-info">
+                {item.message}
+              </div>
+              <div className="chat-footer">{item.updatedAt}</div>
+            </div>
+          )
+        )}
       </div>
-    </div>
-  );
+    );
 }
 
 export default Message;

@@ -8,7 +8,7 @@ function Home() {
     <div className='flex'>
       <Logout/>
         <Left />
-       <Right/>
+       <Right />
     </div>
   )
 }

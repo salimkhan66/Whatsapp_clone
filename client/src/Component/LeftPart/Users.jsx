@@ -12,7 +12,7 @@ function Users() {
             const allUser = await axios.get("http://localhost:8080/user/allusers", {
                 withCredentials: true
             });
-           console.log(allUser.data);
+          //  console.log(allUser.data);
             setAllUser(allUser.data);
         } catch (error) {
             console.error("Error fetching users:", error);

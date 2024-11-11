@@ -1,23 +1,24 @@
-import React  from "react";
+import React, { useContext }  from "react";
 import Chatuser from "./Chatuser";
 import Messages from "./Messages";
 import Typesend from "./Typesend";
-
-
+import { UserContext } from "../../Context/UserProvider";
 function Right() {
+  const [ selectUser, setSelectUser ]= useContext(UserContext);
+ 
 
   return (
     <div className="w-full bg-slate-900 text-gray-300">
       <div>
           <>
-            <Chatuser />
+            <Chatuser selectUser={selectUser} />
             <div
               className=" flex-1 overflow-y-auto"
               style={{ maxHeight: "calc(88vh - 8vh)" }}
             >
-              <Messages />
+              <Messages selectUser={selectUser} setSelectUser={setSelectUser} />
             </div>
-            <Typesend />
+            <Typesend selectUser={selectUser} />
           </>
       
       </div>

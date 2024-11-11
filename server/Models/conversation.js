@@ -1,18 +1,20 @@
-import mongoose from "mongoose";
-import User from "./User";
-import Message from "./Message";
+
+
+const mongoose = require('mongoose');
+// const User=require("./User.js");
+const Message=require("./Message.js");
 const conversationSchema = new mongoose.Schema(
   {
     members: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: User,
+        ref: "User",
       },
     ],
     messages: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: Message,
+        ref: "Message",
         default: [],
       },
     ],
@@ -21,4 +23,4 @@ const conversationSchema = new mongoose.Schema(
 );
 
 const Conversation = mongoose.model("conversation", conversationSchema);
-export default Conversation;
+module.exports= Conversation;
